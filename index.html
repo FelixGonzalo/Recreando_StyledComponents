@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Styled Components</title>
+</head>
+<body>
+  <div id="container"></div>
+  <script src="styledComponents.js"></script>
+  <script src="taggedTemplates.js"></script>
+  <script>
+    const TitleStyled = styled.h1`
+      color: #446AD0;
+      font-family: system-ui;
+      font-size: 50px;
+      text-shadow: 2px 2px 0  black;
+      margin-right: 10px;
+      margin-bottom: 0px;
+      display: inline-block;
+    `
+
+    const ImageStyled = styled.img`
+      border: 3px solid #446AD0;
+      border-radius: 10px;
+    `
+
+    const DescriptionStyled = styled.p`
+      color: #446AD0;
+      font-size: 20px;
+      font-family: consolas;
+    `
+
+    const props = {
+      name: 'Felix Castro',
+      image: 'https://lh3.googleusercontent.com/ogw/ADGmqu8bPgt1lP-YDJsmMArxEckugpBC2wJh_PpGa8QTbg=s32-c-mo',
+      description:  'Hello, I love web development '
+    }
+
+    const Title = createTaggedTemplate`${'name'}`(props)
+    const Image = createTaggedTemplate`${'image'}`(props)
+    const Description = createTaggedTemplate`${'description'}`(props)
+
+    render(
+      window.container, 
+      TitleStyled(Title),
+      ImageStyled(Image),
+      DescriptionStyled(Description),
+    );
+  </script>
+</body>
+</html>
